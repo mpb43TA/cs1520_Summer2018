@@ -1,0 +1,30 @@
+/* 
+TODO: 
+- Change divs to all be on a single line
+- Change responsiveness to shift blocks into a vertical line when compressed
+ */
+
+
+#container {
+    white-space: nowrap;
+    width: 90%;
+    margin: auto;
+}
+
+#red {
+	background-color: red;
+	height: 80vh;
+	width: 60%;
+}
+
+#green {
+	background-color: green;
+	height: 80vh;
+	width: 20%;
+}
+
+#blue {
+	background-color: blue;
+	height: 80vh;
+	width: 20%;
+}
