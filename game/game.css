@@ -1,0 +1,56 @@
+body {
+	margin:0;
+	padding:0;
+	background:#888;
+}
+.playArea {
+	width:800px;
+	height:500px;
+	background:#000;
+	border:10px solid #333;
+	margin:30px auto 0;
+	box-shadow:5px 5px 10px #444;
+	position:relative; /*relative position of play area allows for absolute positioning within it*/
+	overflow:hidden; /*elements can move past borders, but wont be seen (i.e. targets to shoot)*/
+}
+.ship {
+	width:50px;
+	height:50px;
+	background:blue;
+	position:absolute;
+}
+.enemy {
+	width:50px;
+	height:50px;
+	background:green;
+	position:absolute;
+}
+.laser{
+    width: 4px;
+    height: 20px;
+    background: red;
+    position: absolute;
+}
+.score-div {
+   position:absolute;
+   top:10px;
+   left:10px;
+}
+.score-label, .lives-label {
+   font-family:Arial, Helvetica, sans-serif;
+   color:#fff;
+   font-weight:bold;
+   margin:0;
+   font-size:20px;
+}
+.lives-div {
+   position:absolute;
+   top:40px;
+   left:10px;
+}
+.game-over {
+   font-family: Arial, Helvetica, sans-serif;
+   margin-top:240px;
+   text-align:center;
+   color:#fff;
+}

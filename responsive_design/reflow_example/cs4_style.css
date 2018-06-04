@@ -14,18 +14,21 @@ Hint: Look up media queries in responsive design
 
 #red {
 	background-color: red;
+	float: left;
 	height: 80vh;
 	width: 60%;
 }
 
 #green {
 	background-color: green;
+	float: left;
 	height: 80vh;
 	width: 20%;
 }
 
 #blue {
 	background-color: blue;
+	float: left;
 	height: 80vh;
 	width: 20%;
 }
