@@ -10,13 +10,13 @@ body {
 	border:10px solid #333;
 	margin:30px auto 0;
 	box-shadow:5px 5px 10px #444;
-	position:relative; /*relative position of play area allows for absolute positioning within it*/
+	position:relative; /*relative opsition of play area allows for absolute positioning within it*/
 	overflow:hidden; /*elements can move past borders, but wont be seen (i.e. targets to shoot)*/
 }
 .ship {
 	width:50px;
 	height:50px;
-	background:blue;
+	background:red;
 	position:absolute;
 }
 .enemy {

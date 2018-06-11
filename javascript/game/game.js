@@ -87,7 +87,15 @@ window.requestAnimFrame = (function(){
     /*
     1.1 TODO: add functionality to create enemies (hint: look at lasers)
     */
-
+    for (var i = 0; i < enemyTotal; i++) {
+        var enemy = Enemy();
+        enemies.push([enemy, enemyPos.y]);
+        playArea.appendChild(enemies[i][0]);
+        enemies[i][0].classList.add('enemy');
+        enemies[i][0].style.top = enemies[i][1] + 'px';
+        enemies[i][0].style.left = enemyPos.x + 'px';
+        enemyPos.x += 150;
+    }
     //END of global definitions
 
     /*
@@ -205,7 +213,16 @@ window.requestAnimFrame = (function(){
             - consider overlap between enemy and ship
     */
     function moveEnemies() {
-    
+        for (var i = 0; i < enemies.length; i++) {
+            
+            if (parseInt(enemies[i][0].style.top) < playArea.bottomBoundary){
+                enemies[i][1] += enemySpeed;
+                enemies[i][0].style.top = enemies[i][1] + 'px';
+            }else{
+                enemies[i][1] += enemyPos.y ;
+//                 enemies[i][0].style.top = enemies[i][1] + 'px';
+            }
+        }
     }
        
 	function keyDown(e) {
@@ -250,7 +267,8 @@ window.requestAnimFrame = (function(){
 	function loop() {
 	    if (gameOver == false){
             moveShip();
-            /*Intro: Add moveLasers functionality */
+            moveLasers();
+            moveEnemies();
 		}
 		updateScore();
 		requestAnimFrame(loop);
