@@ -2,6 +2,9 @@
 
 {% block title %}{{session["username"]}}{% endblock %}
 
+{% block javascript %}
+    <script type="text/javascript" src="{{ url_for('static', filename='posting.js') }}"></script>
+{% endblock %}
 
 {% block body%}
 		

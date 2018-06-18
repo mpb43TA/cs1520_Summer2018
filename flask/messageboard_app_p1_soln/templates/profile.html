@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}{{session["username"]}}{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{{ url_for('static', filename='posting.js') }}"></script>
+{% endblock %}
+
+{% block body%}
+		
+        <!-- 
+		TODO: Add forms for posting new messages and deleting messages
+		    - only the current user should be able to delete their own messages
+		    - use the css styling to highlight current user post in green
+        -->
+        <form id="post-form"  action="" method="post"">
+			Title:  <input type="text" name="title" />
+			<br/>
+			Body: <input type="text" name="text" />
+			<br/>
+			<input type="submit" value="ADD" name="op"/>
+	    </form>
+	    
+	    <div> Message Board
+	    {% for post in posts %}
+	        {% if post.user_id == user.id %}
+	            <div class = "post-mine">
+	        {% else %}
+	            <div class = "post-other">
+	        {% endif %}
+	            <div>
+                    <text class= "post-title">{{post.title}}</text>
+                    <text>[{{post.user.username}}@{{post.date}}]</text>
+                </div>
+                <div class="post-body">{{post.text}}</div>
+                {% if post.user_id == user.id %}
+                    <form action ="" method="post">
+                        <input style="display: none;" type="text" name ="id" value='{{post.id}}'/>
+                        <input type="submit" value="DELETE" name="op"/>
+                    </form>
+                {% endif %}
+	        </div>
+	    {% endfor %}
+	    </div>
+        
+{% endblock %}

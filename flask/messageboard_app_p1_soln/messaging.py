@@ -33,7 +33,12 @@ def profile(username=None):
 
 	        return redirect(url_for('messaging.profile'))
 	    """
-	    user = get_user(session['username']) 
+	    user = get_user(session['username'])
+	    op = request.form['op']
+	    if op == 'ADD' and request.form['text'] and request.form['title']:
+	        add_post(user, request.form)
+	    elif op=='DELETE':
+	        delete_post(request.form['id'])   
 	    posts = get_posts();
 	    
 	    return render_template("profile.html", user = user, posts = posts)	    
@@ -45,14 +50,21 @@ def delete_post(id):
     """
     TODO: deletes the post in the model
     """
+    to_del = Blogpost.query.get(id)
+    db.session.delete(to_del)
+    db.session.commit()
 	
 def add_post(user, data):
     """
     TODO: adds the post to the model
     """
+    post = Blogpost(user.id, data['title'], data['text'], datetime.now())
+    response = db.session.add(post)
+    db.session.commit()
     
     
 def get_posts():
     """
     TODO: returns posts
     """
+    return Blogpost.query.order_by(desc(Blogpost.date)).all()
