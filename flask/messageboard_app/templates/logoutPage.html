@@ -1,0 +1,8 @@
+
+{% extends "base.html" %}
+
+{% block title %}{{name}}{% endblock %}
+{% block body%}
+    You have successfully been logged out!
+		<a href="{{ url_for("account.logger") }}">Return to the login page.</a>
+{% endblock %}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
+	    {% block javascript %}{% endblock %}
+	</head>
+	<body>
+	<div class ="topnav">
+	    {% if session["username"] %}
+	        <div id="name">{{session['username']}}</div>
+            <a href="{{ url_for("account.unlogger") }}">Logout</a>
+        {% else %}
+            <a  href="{{ url_for("account.logger") }}">Login</a>
+        {% endif %}
+	</div>
+	{% block body %}{% endblock %}
+	</body>
+</html>

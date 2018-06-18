@@ -1,18 +1,30 @@
+
+
 import re
 
 s = "a man, a planter, a plan, a canal: panama" #for questions 1-4
 
 #1. TODO: Find man in string s start/end indices
 print("-- Q1 --\n")
+m = re.search('man',s)
+print('{0}, start:{1} end:{2}'.format(m.group(0), m.start(0), m.end(0))) #(pattern, s)
+print(s[2:5])
 
 #2. TODO: Find all words in s
 print("\n-- Q2 --\n")
+print(re.findall('\w+',s))
 
 #3. TODO: Find plan in string s and the start/end indices
 print("\n-- Q3 --\n")
+m = re.search(r'\b(plan)\b',s)
+print(m.group(0), m.start(0), m.end(0))
+m1 = re.search('plan(?=\W)',s)
+print(m1.group(0), m1.start(0), m1.end(0))
 
 #4. TODO: replace all punctuation and spaces with hyphens in s
+#such that each word is separated by one hyphen
 print("\n-- Q4 --\n")
+print(re.sub('\W+', '-', s))
 
 emails = ["user2015yeah@pitt.edu","somePerson19@gmail.com","another_user@yahoo.com"]
 def print_regexs(strs, re_user, re_dom, re_tld):
@@ -25,6 +37,7 @@ def print_regexs(strs, re_user, re_dom, re_tld):
 #5. TODO retrieve the user name, domain (e.g. gmail or cs.pitt), and top level domain (e.g. edu)
 #use print_regexs() method
 print("\n-- Q5 --\n")
+print_regexs(emails, '.+(?=@)', '(?<=@)\w+', '\w+$')
 
 #6. TODO find all of substrings in s1-s3<#>
 print("\n-- Q6 --\n")
@@ -44,6 +57,43 @@ s = "June 24, August 9, Dec 12"
 print("\n-- Q8 --\n")
 
 address1 = 'http://some_site.com/article/10/matt'
+pattern1 = r'.+/article/(?P<id>\d+)/(?P<author>\w+)$'
+print(re.match(pattern1, address1).groupdict())
 
-#The output should look like the following {'first_name': '10', 'last_name': 'matt'}
+
+#The output should look like the following {'first_name': 'carmen', 'last_name': 'sandiego'}
 address2 = 'http://some_site.com/author/carmen/sandiego'
+pattern2 = r'.+/author/(?P<first_name>\w+)/(?P<last_name>\w+)$'
+print(re.match(pattern2, address2).groupdict())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
