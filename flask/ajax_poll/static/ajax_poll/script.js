@@ -40,6 +40,7 @@ function makePost() {
 	
 	/*TODO #1: Make an http request using the httpRequest variable to:
 	    - To open a POST to the appropriate basicPoll function
+	        - this should correspond to the route specified in basicPoll
 	    - Set the request header to the appropriate content type
 	*/
 
