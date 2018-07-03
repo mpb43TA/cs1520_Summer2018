@@ -68,3 +68,16 @@ def get_posts():
     TODO: returns posts
     """
     return Blogpost.query.order_by(desc(Blogpost.date)).all()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

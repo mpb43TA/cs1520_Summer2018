@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AJAX table updates!</title>
+		<script type="text/javascript" src="{{ url_for('static', filename='ajax_poll/script.js') }}"></script>
+	</head>
+	<body>
+	    <div id = "content">
+            <h3> Enter your favorite ice cream: </h3>
+            <form name="theForm">
+                First Name: <input type="text" id="first" name="first" value="" />
+                <br/>Last Name: <input type="text" id="last" name="last" value="" />
+                <br/> Favorite Ice Cream:
+                <select id ='selection' name="icecream">
+                  <option id = 'initial' value="" disabled selected>---</option>
+                  {% for choice in flavors%}
+                    <option value = "{{choice}}">{{choice}}</option>
+                  {% endfor %}
+                    <option value = "other">other</option>
+                </select>
+                <br/><input type ="text" id = "other" name='other' placeholder='other' value = '' style = "display:none"/>
+                <input type="button" id="theButton" value="enter"/>
+            </form>
+		</div>
+		<table id="theTable">
+		</table>
+		<table id="statTable">
+		</table>
+	</body>
+</html>

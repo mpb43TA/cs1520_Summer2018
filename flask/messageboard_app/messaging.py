@@ -56,3 +56,15 @@ def get_posts():
     """
     TODO: returns posts
     """
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
