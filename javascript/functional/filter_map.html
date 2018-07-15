@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Map Reduce</title>
+</head>
+<body>
+    
+    <div id = "mapping">
+        <h3> Mapping </h3> 
+    </div>
+    
+    <div id = "filtering">
+        <h3>Filtering</h3> 
+    </div>
+    
+    <script type = "text/javascript">
+        var word_list = ['apple', 'pineapple', 'kiwi', 'banana'];
+        var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+        var mapping = document.getElementById("mapping");
+        var filtering = document.getElementById("filtering");
+
+        function write_word(word, suffix){
+            if (word != undefined){
+                var p = document.createElement('p');
+                p.innerHTML = word;
+                document.getElementById(word.charAt(0)+suffix).appendChild(p);
+            }
+        }
+        
+        function write_words(words, suffix){
+            for (var i in words){
+                var word = words[i];
+                var p = document.createElement('p');
+                p.innerHTML = word;
+                document.getElementById(word.charAt(0)+suffix).appendChild(p);
+            }
+        }
+        
+        function mapper(word){
+            if (word.charAt(0) == this.letter)
+                return write_word(word, this.suffix);
+        };
+                      
+        function filterer(word){
+            return word.charAt(0) == this.letter;
+        }
+        
+        
+        /*
+            - For each letter in the alphabet create a div
+            - Give an id to that div
+        */
+        for (var i in alphabet){ 
+            var div_map = document.createElement('div');
+            var div_fil = document.createElement('div');
+            div_map.id = alphabet[i]+'_map';
+            div_fil.id = alphabet[i]+'_fil'
+            mapping.appendChild(div_map);
+            filtering.appendChild(div_fil)
+        }
+        
+        /*
+            - Mapper: 
+                -   For each word that starts with the current letter in the alphabet
+                    append to the given Id
+            - Filter:
+                -   Using filter to create new array of elements
+        */
+        list = []
+        for (var i in alphabet){
+            word_list.map(mapper, {letter: alphabet[i],
+                                            suffix: '_map'});
+            
+            list[i] = function(){
+                        words = word_list.filter(filterer, {letter : alphabet[i]});
+                        if (words.length>0){
+                            write_words(words, '_fil'); 
+                        }
+                    }      
+        }
+        for (var i in list){
+            list[i]();
+        }
+        
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

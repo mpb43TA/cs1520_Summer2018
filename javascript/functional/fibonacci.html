@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fibonacci</title>
+</head>
+<body>
+    
+    <div id = "fib_div">
+        <h3> Fibonacci </h3>
+        <form id = "fib_form">
+            Sequence Length: <input type="text" id= "seq_length">
+            <br><input type ="submit" value = "Submit"/>
+        </form>
+        
+        <div>
+            <p id ='sq'></p>
+            <p id ='sum'></p>
+            <p id = 'fib'></p>
+        </div>
+    </div>
+    
+    
+    <script type = "text/javascript">
+    
+    function make_textnode(text){
+        return document.createTextNode(text);
+    }
+    
+    function clear_children(node){
+        while(node.hasChildNodes()){
+            node.removeChild(node.childNodes[0]);
+        }
+    }
+    
+    function run_all(e){
+        if(e.preventDefault) e.preventDefault();
+        
+        clear_children(document.getElementById("sq"));
+        clear_children(document.getElementById("sum"));
+        clear_children(document.getElementById("fib"));
+        
+        var length = parseInt(document.getElementById('seq_length').value);
+            
+        arr = fibonacci(length) //TODO #1 (see below)
+        run_sum(arr); //TODO #2 (see below)
+        run_sq(arr); //TODO #3 (see below)
+        
+        return false;
+    }
+    
+    function run_sq(arr){
+        //TODO #3: Implement map function to square values
+        document.getElementById("sq").appendChild(make_textnode("sq_ans: "));
+
+    }
+    
+    
+    function run_sum(arr){
+        //TODO #2: Implement reduce function to sum values
+        
+        document.getElementById("sum").appendChild(make_textnode("sum_ans: "));
+    }
+    
+    function fibonacci(length){
+        //TODO #1: create fibonacci array of the given length (https://en.wikipedia.org/wiki/Fibonacci_number)
+        //  - print array
+        //  - return array 
+        document.getElementById("fib").appendChild(make_textnode("fib_ans"));
+        
+    }
+    
+    //Adding an event listener to the form
+    var form = document.getElementById('fib_form');
+    if (form.attachEvent){
+        form.attachEvent("submit", run_all);
+    }else{
+        form.addEventListener("submit", run_all);
+    }
+        
+    </script>
+</body>
+</html>
