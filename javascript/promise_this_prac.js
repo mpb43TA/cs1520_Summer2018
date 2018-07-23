@@ -3,7 +3,7 @@
 
 
 function addPromise(){
-    //Each of the following todos specify the functions required
+    //Each of the following todos specify the functions requirements in a chain of permissions
     //TODO 1: get input nodes from the form
     //TODO 2: sum all values within in the elements
     //TODO 3: create a div with the sum value
